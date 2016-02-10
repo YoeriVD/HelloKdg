@@ -6,12 +6,7 @@ namespace HelloKdg.IoC
 {
     internal class AppContainer
     {
-        private static readonly Lazy<IContainer> LazyContainer =
-            new Lazy<IContainer>(() => new AppContainer().CreateContainer());
-
-        public static IContainer Container => LazyContainer.Value;
-
-        private IContainer CreateContainer()
+        internal IContainer CreateContainer()
         {
             var builder = new ContainerBuilder();
             // Registers all modules

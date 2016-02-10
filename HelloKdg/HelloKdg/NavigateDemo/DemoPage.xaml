@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helloKdg="clr-namespace:HelloKdg;assembly=HelloKdg"
+             x:Class="HelloKdg.NavigateDemo.DemoPage"
+             BindingContext="{x:Static helloKdg:ViewModelLocator.DemoViewModel}">
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+        <Button Command="{Binding GoBack}" Text="Go back"></Button>
+    </StackLayout>
+</ContentPage>
