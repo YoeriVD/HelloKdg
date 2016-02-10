@@ -14,29 +14,29 @@ namespace HelloKdg.Navigation
 
     internal class AppNavigation : IAppNavigation
     {
-        private readonly ILifetimeScope _container;
-        private readonly Func<NavigationPage> _navigationPage;
+        private readonly IComponentContext _container;
+        private readonly Lazy<NavigationPage> _navigationPage;
+        private NavigationPage NavigationPage => _navigationPage.Value;
 
-        public AppNavigation(ILifetimeScope container)
+        public AppNavigation(IComponentContext container, Lazy<NavigationPage> navigationPage)
         {
             _container = container;
-            //todo: inject this ?
-            _navigationPage = () => Application.Current.MainPage as NavigationPage;
+            _navigationPage = navigationPage;
         }
 
         public Task NavigateTo<T>() where T : Page
         {
-            return _navigationPage().PushAsync(_container.Resolve<T>());
+            return NavigationPage.PushAsync(_container.Resolve<T>());
         }
 
         public Task NavigateBack()
         {
-            return _navigationPage().PopAsync();
+            return NavigationPage.PopAsync();
         }
 
         public Task NavigateToRoot()
         {
-            return _navigationPage().PopToRootAsync();
+            return NavigationPage.PopToRootAsync();
         }
     }
 }

@@ -11,10 +11,7 @@ namespace HelloKdg
 
         private static T Resolve<T>()
         {
-            using (var scope = App.Container.BeginLifetimeScope())
-            {
-                return scope.Resolve<T>();
-            }
+            return App.Container.Resolve<T>();
         }
     }
 }

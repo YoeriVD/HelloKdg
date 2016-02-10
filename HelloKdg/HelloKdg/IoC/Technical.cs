@@ -1,5 +1,7 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using HelloKdg.Navigation;
+using Xamarin.Forms;
 
 namespace HelloKdg.IoC
 {
@@ -9,8 +11,10 @@ namespace HelloKdg.IoC
         {
             base.Load(builder);
             builder
-                .RegisterType<Navigation.AppNavigation>()
-                .As<IAppNavigation>();
+                .RegisterType<AppNavigation>()
+                .As<IAppNavigation>()
+                .WithParameter(new TypedParameter(typeof (Lazy<NavigationPage>),
+                    new Lazy<NavigationPage>(() => (NavigationPage) Application.Current.MainPage)));
         }
     }
 }
