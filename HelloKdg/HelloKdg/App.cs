@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Autofac;
 using HelloKdg.IoC;
 using HelloKdg.Main;
@@ -11,15 +12,18 @@ namespace HelloKdg
         private static readonly Lazy<IContainer> LazyContainer =
             new Lazy<IContainer>(() => new AppContainer().CreateContainer());
 
-        internal static NavigationPage NavigationPage { get; private set; }
+        private readonly NavigationPage _navigationPage;
+
 
         public static IContainer Container => LazyContainer.Value;
         public App()
         {
             // The root page of your application
-            NavigationPage = new NavigationPage(Container.Resolve<MainPage>());
-            MainPage = NavigationPage;
+            _navigationPage = new NavigationPage(Container.Resolve<MainPage>());
+            MainPage = _navigationPage;
         }
+
+
 
         protected override void OnStart()
         {

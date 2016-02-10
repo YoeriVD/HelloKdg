@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
-using Autofac;
 using HelloKdg.NavigateDemo;
+using HelloKdg.Navigation;
 using Xamarin.Forms;
 
 namespace HelloKdg.Main
@@ -13,9 +13,16 @@ namespace HelloKdg.Main
 
     internal class MainViewModel : IMainViewModel
     {
+        private readonly IAppNavigation _navigation;
+
+        public MainViewModel(IAppNavigation navigation)
+        {
+            _navigation = navigation;
+        }
+
         public string MainText => "sup brah!";
 
-        public ICommand NavigateToDemo { get; } =
-            new Command(() => App.NavigationPage.PushAsync(App.Container.Resolve<DemoPage>()));
+        public ICommand NavigateToDemo => new Command(() => _navigation.NavigateTo<DemoPage>());
+        
     }
 }
