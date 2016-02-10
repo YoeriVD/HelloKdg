@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HelloKdg.Main
+﻿namespace HelloKdg.Main
 {
-    internal interface IMainViewModel
+    public interface IMainViewModel
     {
+        string MainText { get; }
     }
 
     class MainViewModel : IMainViewModel
     {
+        public string MainText => "sup brah!";
     }
 }

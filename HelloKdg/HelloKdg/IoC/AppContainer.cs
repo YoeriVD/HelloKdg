@@ -1,11 +1,17 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using Autofac;
 
 namespace HelloKdg.IoC
 {
     internal class AppContainer
     {
-        public IContainer CreateContainer()
+        private static readonly Lazy<IContainer> LazyContainer =
+            new Lazy<IContainer>(() => new AppContainer().CreateContainer());
+
+        public static IContainer Container => LazyContainer.Value;
+
+        private IContainer CreateContainer()
         {
             var builder = new ContainerBuilder();
             // Registers all modules

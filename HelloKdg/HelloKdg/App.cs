@@ -1,4 +1,7 @@
-﻿using Xamarin.Forms;
+﻿using Autofac;
+using HelloKdg.IoC;
+using HelloKdg.Main;
+using Xamarin.Forms;
 
 namespace HelloKdg
 {
@@ -7,19 +10,7 @@ namespace HelloKdg
         public App()
         {
             // The root page of your application
-            MainPage = new ContentPage
-            {
-                Content = new StackLayout
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    Children = {
-                        new Label {
-                            HorizontalTextAlignment = TextAlignment.Center,
-                            Text = "Welcome to Xamarin Forms!"
-                        }
-                    }
-                }
-            };
+            MainPage = new NavigationPage(AppContainer.Container.Resolve<MainPage>());
         }
 
         protected override void OnStart()
