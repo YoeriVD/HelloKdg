@@ -4,10 +4,9 @@ namespace HelloKdg.Main
 {
     public partial class MainPage : ContentPage
     {
-        public MainPage(IMainViewModel mainViewModel)
+        public MainPage()
         {
             InitializeComponent();
-            BindingContext = mainViewModel;
         }
     }
 }
