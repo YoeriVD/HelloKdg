@@ -5,8 +5,8 @@
              xmlns:helloKdg="clr-namespace:HelloKdg;assembly=HelloKdg"
              x:Class="HelloKdg.Main.MainPage"
              BindingContext="{x:Static helloKdg:ViewModelLocator.MainViewModel}">
-    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-  <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
-        <Button Command="{Binding NavigateToDemo}" Text="Navigate to demo page" WidthRequest="100" HeightRequest="20"></Button>
-    </StackLayout>
+  <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+    <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+    <Button Command="{Binding NavigateToDemo}" Text="Navigate to demo page"></Button>
+  </StackLayout>
 </ContentPage>
