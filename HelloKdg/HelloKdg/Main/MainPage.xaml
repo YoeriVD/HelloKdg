@@ -6,7 +6,7 @@
              x:Class="HelloKdg.Main.MainPage"
              BindingContext="{x:Static helloKdg:ViewModelLocator.MainViewModel}">
     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-        <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
-        <Button Command="{Binding NavigateToDemo}" Text="Navigate to demo page" />
+  <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+    <Button Command="{Binding NavigateToDemo}" Text="Navigate to demo page"></Button>
     </StackLayout>
 </ContentPage>
