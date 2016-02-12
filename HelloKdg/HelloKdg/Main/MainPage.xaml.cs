@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System.Runtime.InteropServices;
+using Xamarin.Forms;
 
 namespace HelloKdg.Main
 {
@@ -7,6 +8,8 @@ namespace HelloKdg.Main
         public MainPage()
         {
             InitializeComponent();
+            MessagingCenter.Subscribe<MainViewModel, string>(this, "DisplayAlert", (sender, args) => DisplayAlert("Alert", args, "Ok"));
         }
+        
     }
 }
